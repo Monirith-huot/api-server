@@ -4,6 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const config = require('./config');
 const studentRoutes = require('./routes/student-routes');
+const favoriteRoutes = require('./routes/favorite-routes');
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/api', studentRoutes.routes);
+app.use('/api', favoriteRoutes.routes)
 
 
 
