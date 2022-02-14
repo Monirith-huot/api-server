@@ -3,7 +3,7 @@ const {addStudent,
         getAllStudents, 
         getStudent,
         updateStudent,
-        deleteStudent
+        deleteStudent,
         } = require('../controllers/studentController');
 
 const router = express.Router();

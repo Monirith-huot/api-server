@@ -1,6 +1,6 @@
 class Student {
-    constructor(stuId, name, vc, projectName) {
-        this.stuId = stuId;
+    constructor(id, name, vc, projectName) {
+        this.id = id;
         this.name = name;
         this.vc = vc;
         this.projectName = projectName;

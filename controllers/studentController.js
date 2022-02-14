@@ -64,7 +64,6 @@ const updateStudent = async (req, res, next) => {
         res.status(400).send(error.message);
     }
 }
-
 const deleteStudent = async (req, res, next) => {
     try {
         const id = req.params.id;
@@ -75,10 +74,12 @@ const deleteStudent = async (req, res, next) => {
     }
 }
 
+
+
 module.exports = {
     addStudent,
     getAllStudents,
     getStudent,
     updateStudent,
-    deleteStudent
+    deleteStudent,
 }
