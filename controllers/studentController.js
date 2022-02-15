@@ -74,17 +74,14 @@ const deleteStudent = async (req, res, next) => {
     }
 }
 const deleteAllStudents = async(req, res, next) => {
-    try {
-        const students = await firestore.collection('students'); 
-        const data = await students.get();
-
-        for (let i = 0; i < data.length; i++) {
-            await students.delete(data[i])
-        }
-    }
-    catch (error) {
-        res.send(400).send(error.message);
-    }
+    const deleteStudents = await firestore
+    .collection('students')
+    .get();
+    const batch = firestore.batch();
+    deleteStudents.forEach(doc => {
+    batch.delete(doc.ref);
+    });
+    await batch.commit();
 }
 
 
