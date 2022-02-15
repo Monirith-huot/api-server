@@ -5,6 +5,7 @@ const {
     getFavorite,
     updateFavorite,
     deleteFavorite,
+    deleteAllFavorites,
 
 } = require('../controllers/favoriteController')
 
@@ -16,6 +17,7 @@ router.get("/favorites", getAllFavorite);
 router.get("/favorite/:id", getFavorite);
 router.put("/favorite/:id", updateFavorite)
 router.delete("/favorite/:id", deleteFavorite)
+router.delete("/favorite/", deleteAllFavorites)
 
 module.exports = {
     routes: router

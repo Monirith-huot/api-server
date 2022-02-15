@@ -75,6 +75,17 @@ const deleteFavorite = async (req, res, next) => {
     }
 }
 
+const deleteAllFavorites = async(req, res, next) => {
+    const deleteStudents = await firestore
+    .collection('favorites')
+    .get();
+    const batch = firestore.batch();
+    deleteStudents.forEach(doc => {
+    batch.delete(doc.ref);
+    });
+    await batch.commit();
+}
+
 
 
 module.exports = {
@@ -83,4 +94,5 @@ module.exports = {
     getFavorite,
     updateFavorite,
     deleteFavorite,
+    deleteAllFavorites,
 }
