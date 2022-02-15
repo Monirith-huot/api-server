@@ -7,7 +7,7 @@ const firestore = firebase.firestore();
 
 const addStudent = async (req, res, next) => {
     try {
-        const data = req.body;
+        const data = req.body; //what we get from frontEnd  {id, name, vc, projectName}
         await firestore.collection('students').doc(data.id).set(data);
     } catch (error) {
         res.status(400).send(error.message);
@@ -73,6 +73,19 @@ const deleteStudent = async (req, res, next) => {
         res.status(400).send(error.message);
     }
 }
+const deleteAllStudents = async(req, res, next) => {
+    try {
+        const students = await firestore.collection('students'); 
+        const data = await students.get();
+
+        for (let i = 0; i < data.length; i++) {
+            await students.delete(data[i])
+        }
+    }
+    catch (error) {
+        res.send(400).send(error.message);
+    }
+}
 
 
 
@@ -82,4 +95,5 @@ module.exports = {
     getStudent,
     updateStudent,
     deleteStudent,
+    deleteAllStudents,
 }
