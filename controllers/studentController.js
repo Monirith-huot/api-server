@@ -7,6 +7,7 @@ const firestore = firebase.firestore();
 
 const addStudent = async (req, res, next) => {
     try {
+
         const data = req.body; //what we get from frontEnd  {id, name, vc, projectName}
         await firestore.collection('students').doc(data.id).set(data);
     } catch (error) {
@@ -28,6 +29,7 @@ const getAllStudents = async (req, res, next) => {
                     doc.data().name,
                     doc.data().vc,
                     doc.data().projectName,
+                    doc.data().favorite,
                 );
                 studentsArray.push(student);
             });
